@@ -15,9 +15,16 @@ def process_print_score(score, best_score):
     print(f'Score: {score} | Best Score: {best_score}\n')
     return best_score
 
+def display_apples():
+    print("\n")
+    print("  \U0001F34E     \U0001F34F")  # ASCII art for two apples
+    print("  [ 1 ]     [ 2 ]")
+    print("\n")
+
 def get_input():
     while True:
         try:
+            display_apples()
             user_input = int(input('Input 1, 2 to select apple. 0 to quit (0, 1, or 2): '))
             if user_input in [0, 1, 2]:
                 return user_input
