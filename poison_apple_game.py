@@ -1,5 +1,18 @@
 from random import choice
 
+def display_title():
+    title_art=r"""
+    __________      .__                               .___    _____                .__          
+    \______   \____ |__| __________   ____   ____   __| _/   /  _  \ ______ ______ |  |   ____  
+    |     ___/  _ \|  |/  ___/  _ \ /    \_/ __ \ / __ |   /  /_\  \\\____ \\\____ \|  | _/ __ \ 
+    |    |  (  <_> )  |\___ (  <_> )   |  \  ___// /_/ |  /    |    \  |_> >  |_> >  |_\  ___/ 
+    |____|   \____/|__/____  >____/|___|  /\___  >____ |  \____|__  /   __/|   __/|____/\___  >
+                            \/           \/     \/     \/          \/|__|   |__|             \/ 
+
+    """
+    print(title_art)
+    
+
 def random_bool():
     return choice([True, False])
 
@@ -34,6 +47,7 @@ def get_input():
             print("Invalid input. Please enter a valid number (0, 1, or 2).")
 
 def main():
+    display_title()
     print('Poison Apple Game')
     print('=================')
     print('Two apples: one is poison. Eat the wrong apple and die.')
