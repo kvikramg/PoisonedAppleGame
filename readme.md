@@ -85,5 +85,5 @@ Contributions and suggestions are welcome! Feel free to fork the repository and 
 
 ## License
 
-This game is open-source and available under the MIT License.
+This game is free and unencumbered software released into the public domain.
 
