@@ -7,8 +7,8 @@ class PoisonedApple:
         self.best_score = 0  # Highest score achieved across games
         self.quit_game = False  # Flag to track if the user wants to quit
         self.game_no = 0  # Counter for the number of games played
-        self.run()  # Start the game
-    
+        self.apple = [True, False]  # Initialize apple states (True = safe, False = poisoned)
+
     def display_title(self):
         # Display the title art for the game
         title_art = r"""
@@ -30,10 +30,13 @@ class PoisonedApple:
         self.apple[0] = self.random_bool()
         self.apple[1] = not self.apple[0]  # Ensure one is the opposite of the other
 
-    def process_print_score(self):
-        # Update and print the current and best scores
-        if self.score > self.best_score:  # Check for new high score
+    def update_scores(self):
+        # Update the best score if the current score exceeds it
+        if self.score > self.best_score:
             self.best_score = self.score
+
+    def print_scores(self):
+        # Print the current and best scores
         print(f'Score: {self.score} | Best Score: {self.best_score}\n')
 
     def display_apples(self):
@@ -44,10 +47,12 @@ class PoisonedApple:
         print("\n")
 
     def get_input(self):
+        # Display apples once before input loop starts
+        self.display_apples()  # Show the apple options
+        
         # Get and validate user input for choosing an apple or quitting
         while True:
             try:
-                self.display_apples()  # Show the apple options
                 self.user_input = int(input('Input 1, 2 to select apple. 0 to quit (0, 1, or 2): '))
                 if self.user_input in [0, 1, 2]:
                     return self.user_input
@@ -70,8 +75,6 @@ class PoisonedApple:
             self.game_no += 1  # Increment game counter
             print(f'New Game {self.game_no}')
 
-            self.apple = [True, False]  # Initialize apple states (True = safe, False = poisoned)
-
             while self.alive:
                 # Reset apple positions
                 self.reset_apple()
@@ -81,7 +84,8 @@ class PoisonedApple:
                 if self.user_input == 0:  # Player chooses to quit
                     self.quit_game = True
                     self.alive = False
-                    self.process_print_score()  # Display final scores
+                    self.update_scores()  # Update scores before quitting
+                    self.print_scores()  # Display final scores
                     print('👋 Bye!!')
                 else:
                     # Check if the chosen apple is safe or poisoned
@@ -92,7 +96,10 @@ class PoisonedApple:
                     else:
                         print('\U0001F480 You ate a poisoned apple!! You died. \U0001F480')
                     
-                    self.process_print_score()  # Display updated scores
+                    self.update_scores()  # Update the scores after each choice
+                    self.print_scores()  # Display updated scores
 
 if __name__ == "__main__":
-    my_game = PoisonedApple()
+    # Only start the game explicitly to provide more flexibility
+    game = PoisonedApple()
+    game.run()
