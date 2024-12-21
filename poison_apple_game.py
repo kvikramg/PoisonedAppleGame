@@ -30,15 +30,16 @@ def process_print_score(score, best_score):
 
 def display_apples():
     print("\n")
-    print("  \U0001F34E     \U0001F34F")  # ASCII art for two apples
-    print("  [ 1 ]     [ 2 ]")
+    print("   🍎         🍏         ❌")  # ASCII art for two apples
+    print("  [ 1 ]      [ 2 ]      [ 0 ]")
     print("\n")
 
 def get_input():
     while True:
         try:
             display_apples()
-            user_input = int(input('Input 1, 2 to select apple. 0 to quit (0, 1, or 2): '))
+            #user_input = int(input('Input 1, 2 to select apple. 0 to quit (0, 1, or 2): '))
+            user_input = int(input('>'))
             if user_input in [0, 1, 2]:
                 return user_input
             else:
@@ -75,13 +76,14 @@ def main():
                 quit_game = True
                 alive = False
                 best_score = process_print_score(score, best_score)
-                print('Bye!!')
+                print('👋 Bye!!')
             else:
                 alive = apple[user_input - 1]
                 if alive:
                     score += 1
+                    print ('\U0001F60B Yummy')
                 else:
-                    print('You ate a poisoned apple!! You died.')
+                    print('\U0001F480 You ate a poisoned apple!! You died. \U0001F480')
                 
                 best_score = process_print_score(score, best_score)
 
